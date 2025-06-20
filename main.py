@@ -18,7 +18,6 @@ def get_db():
 @app.post("/collections/", response_model=schemas.Collection)
 def creqate_collection(collection: schemas.CollectionCreate, db: Session = Depends(get_db)):
     return crud.create_collection(db, collection)
-    
 @app.get("/collections/", response_model=list[schemas.Collection])
 def list_collections(db: Session = Depends(get_db)):
     return crud.get_collection(db)
@@ -37,3 +36,4 @@ def add_contribution(collection_id: int, contribution: schemas.ContributionCreat
 @app.get("/collections/underfunded/", response_model=list[schemas.Collection])
 def get_underfunded_collections(db: Session = Depends(get_db)):
     return crud.get_underfunded_collections(db)
+    
